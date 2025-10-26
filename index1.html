@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Attendance Management System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style1.css">
+</head>
+<body>
+  <!-- Login/Signup Page -->
+  <div id="authPage" class="auth-container">
+    <div class="auth-card">
+      <div class="auth-header">
+        <div class="logo">AM</div>
+        <h1>Attendance Management</h1>
+        <p>Track employee attendance and working hours</p>
+      </div>
+      
+      <div class="auth-tabs">
+        <button class="tab-btn active" data-tab="login">Login</button>
+        <button class="tab-btn" data-tab="signup">Sign Up</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="auth-form active">
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+
+      <!-- Signup Form -->
+      <form id="signupForm" class="auth-form">
+        <div class="form-group">
+          <label for="signupName">Full Name</label>
+          <input type="text" id="signupName" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="signupEmail">Email</label>
+          <input type="email" id="signupEmail" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="signupPassword">Password</label>
+          <input type="password" id="signupPassword" placeholder="Create a password" required>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main Application (Hidden initially) -->
+  <div id="appPage" class="app-container" style="display: none;">
+    <div class="bg">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="blob b3"></div>
+    </div>
+
+    <header class="app-header">
+      <div class="brand">
+        <div class="logo">AM</div>
+        <div>
+          <h1>Attendance Management</h1>
+          <p>Track employee attendance and working hours</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span class="user-info">Welcome, <span id="currentUser"></span></span>
+        <button id="exportCsvBtn" class="btn btn-secondary">Export CSV</button>
+        <button id="clearAllBtn" class="btn btn-danger-outline">Clear All</button>
+        <button id="logoutBtn" class="btn btn-danger-outline">Logout</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="panel controls-panel">
+        <h2>Mark Attendance</h2>
+        <div class="controls">
+          <input type="text" id="employeeName" placeholder="Enter Employee Name (e.g., Jane Doe)">
+          <button id="checkInBtn" class="btn">Check In</button>
+          <button id="checkOutBtn" class="btn btn-secondary">Check Out</button>
+        </div>
+        <div class="filters">
+          <div class="filter-group">
+            <label for="search">Search</label>
+            <input type="text" id="search" placeholder="Search by name">
+          </div>
+          <div class="filter-group">
+            <label for="dateFilter">Date</label>
+            <input type="date" id="dateFilter">
+          </div>
+          <div class="filter-group">
+            <label for="statusFilter">Status</label>
+            <select id="statusFilter">
+              <option value="all">All</option>
+              <option value="Present">Present (checked-in)</option>
+              <option value="Completed">Completed (checked-out)</option>
+            </select>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-value" id="statEmployees">0</div>
+            <div class="stat-label">Employees Today</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value" id="statPresent">0</div>
+            <div class="stat-label">Currently Present</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value" id="statHours">0</div>
+            <div class="stat-label">Total Hours (Today)</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel table-panel">
+        <h2>Attendance Records</h2>
+        <div class="table-wrapper">
+          <table id="attendanceTable">
+            <thead>
+              <tr>
+                <th>Employee Name</th>
+                <th>Date</th>
+                <th>Check-In</th>
+                <th>Check-Out</th>
+                <th>Working Hours</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Records render here -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./app1.js"></script>
+</body>
+</html>
